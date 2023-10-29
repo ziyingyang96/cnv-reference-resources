@@ -1,0 +1,61 @@
+site_name: hCNV Reference Resources
+site_description: 'Data &amp; tools for hCNV analysis with a focus on the distributed normal'
+site_author: Michael Baudis
+repo_name: 'cnv-reference-resources'
+repo_url: https://github.com/hCNV/cnv-reference-resources
+edit_uri: edit/main/docs/
+
+###############################################################################
+
+nav:
+  - Project Home: index
+  - Input Data: data-resources
+  - Parameters &amp; Mappings: parameters-and-mappings
+  - Beacon Queries: beacon-queries
+  - hCNH Home: /
+  - Biohack 2023 Page: https://github.com/elixir-europe/biohackathon-projects-2023/tree/main/1
+  - Beacon Documentation: 'https://docs.genomebeacons.org'
+
+###############################################################################
+
+markdown_extensions:
+  - toc:
+      toc_depth: 2-3
+      permalink: true
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      hide_protocol: true
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.saneheaders
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid   
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - mdx_gh_links:
+      user: hCNV
+      repo: hcnv.github.io
+  - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+
+###############################################################################
+
+theme:
+  name: material
+plugins:
+    - search
+    - macros

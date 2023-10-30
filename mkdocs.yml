@@ -8,11 +8,11 @@ edit_uri: edit/main/docs/
 ###############################################################################
 
 nav:
-  - Project Home: index
-  - Input Data: data-resources
-  - Parameters &amp; Mappings: parameters-and-mappings
-  - Beacon Queries: beacon-queries
-  - hCNH Home: /
+  - Project Home: index.md
+  - Input Data: data-resources.md
+  - Parameters &amp; Mappings: parameters-and-mappings.md
+  - Beacon Queries: beacon-queries.md
+  - hCNV Home: /
   - Biohack 2023 Page: https://github.com/elixir-europe/biohackathon-projects-2023/tree/main/1
   - Beacon Documentation: 'https://docs.genomebeacons.org'
 
@@ -35,6 +35,7 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.saneheaders
+  - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -56,6 +57,9 @@ markdown_extensions:
 
 theme:
   name: material
+  logo: img/hCNV-Elixir-logo.svg
 plugins:
     - search
     - macros
+extra_css:
+  - css/theme_overrides.css

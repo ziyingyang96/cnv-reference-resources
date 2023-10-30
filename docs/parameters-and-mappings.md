@@ -17,4 +17,119 @@ an hCNV reference resource potentially map to all of those entities; e.g.
 
 * donor sex  => `individual.sex`
 
+### Progenetix `bycon` parameter mappings
+
+The Progenetix implementation of the Beacon API - through the [`bycon`](https://github.com/progenetix/bycon/)
+stack - closely adheres internally to the Beacon v2 default model. Specifically,
+records are stored in document formats described in JSON Schema with overall correspondance
+to the standard Beacon models, and stored in a MongoDB database with per schema
+collections (`individuals`, `biosamples`, `callsets` and `variants` as well as helper
+collections for e.g. ontologies or genome lookups).
+
+For data I/O the `bycon` package contains a mapping file which allows to map data from
+columnar (_i.e._ tab delimited) input files to the corresponding attributes in the
+document schemas.
+
+#### Example `bycon` parameter mappings
+
+``` yaml
+  genomicVariant:
+    type: object
+    parameters:
+      variant_id:
+        db_key: id
+        indexed: True
+        compact: True
+        computed: True
+      variant_internal_id:
+        type: string
+        db_key: variant_internal_id
+        indexed: True
+        compact: True
+        computed: True
+      callset_id:
+      	description: |
+      		The bycon model uses `callset` to store
+      		information corresponding to Beacon's `analysis`
+      		and `run` entities.
+        type: string
+        db_key: callset_id
+        indexed: True
+        compact: True
+      biosample_id:
+        type: string
+        db_key: biosample_id
+        indexed: True
+        compact: True
+      individual_id:
+        type: string
+        db_key: individual_id
+        indexed: True
+        compact: True
+      sequence_id:
+        type: string
+        db_key: location.sequence_id
+        indexed: True
+        compact: True
+      reference_name:
+        type: string
+        db_key: location.chromosome
+        indexed: True
+        compact: True
+      start:
+        type: integer
+        db_key: location.start
+        indexed: True
+        compact: True
+      end:
+        type: integer
+        db_key: location.end
+        indexed: True
+        compact: True
+      variant_state_id:
+        type: string
+        db_key: variant_state.id
+        indexed: True
+        compact: True
+      variant_state_label:
+        type: string
+        db_key: variant_state.label
+        compact: True
+      reference_bases:
+        type: string
+        db_key: reference_sequence
+        indexed: True
+        compact: True
+      alternate_bases:
+        type: string
+        db_key: sequence
+        indexed: True
+        compact: True
+      annotation_derived:
+        type: boolean
+        db_key: info.annotation_derived
+        default: False
+        indexed: True
+      aminoacid_changes:
+        type: array
+        items: string
+        db_key: molecular_attributes.aminoacid_changes
+        indexed: True
+      genomic_hgvs_id:
+        type: string
+        db_key: identifiers.genomicHGVS_id
+        indexed: True
+
+      # special pgxseg columns
+
+      log2:
+        db_key: info.cnv_value
+        type: number
+      variant_type:
+        type: string
+        db_key: variant_type
+
+```
+
+
 
